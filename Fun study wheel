@@ -1,0 +1,40 @@
+import random
+
+while True:
+    chapters = []
+
+    print("\n========================================")
+    print("      🎯 WELCOME TO BACKLOG WHEEL 🎯    ")
+    print("========================================")
+
+    while True:
+        new_chapter = input("Enter a chapter (or type 'done' to finish): ")
+        if new_chapter.lower() == "done":
+            break
+        chapters.append(new_chapter)
+
+    if not chapters:
+        print("No chapters entered! Exiting program.")
+        break
+
+    print("\n--- Backlog Wheel Loaded! Let's Start Studying ---")
+
+    while chapters:
+        spin_prompt = input("\nReady to spin the wheel? (press Enter to spin, or type 'quit' to stop): ").strip().lower()
+        if spin_prompt == 'quit':
+            break
+
+        chosen_chapter = random.choice(chapters)
+        print(f"✨ Your randomly picked chapter: {chosen_chapter}")
+        
+        chapters.remove(chosen_chapter)
+        print(f"📦 Remaining chapters in backlog: {chapters}")
+
+        if not chapters:
+            print("\n🎉 All chapters cleared! Backlog conquered!")
+            break
+
+    play_again = input("\nDo you want to start a brand new list of chapters? (yes/no): ").strip().lower()
+    if play_again != "yes":
+        print("\nFantastic coding session today! 🚀")
+        break
